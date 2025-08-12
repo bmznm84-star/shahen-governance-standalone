@@ -1,0 +1,11 @@
+
+:root { --tga-start:#A6E3D1; --tga-end:#FFD24D; }
+* { scrollbar-width: thin; }
+body { font-family: 'Tajawal', system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+.bg-tga { background: linear-gradient(135deg, var(--tga-start), var(--tga-end)); }
+.border-tga { border-image: linear-gradient(135deg, var(--tga-start), var(--tga-end)) 1; }
+.card { @apply rounded-2xl p-5 shadow-md border border-slate-200 dark:border-slate-800; }
+.kpi { @apply card flex flex-col gap-2; }
+.badge { @apply px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800; }
+.navlink { @apply px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition; }
+.footer { @apply text-xs text-slate-500; }

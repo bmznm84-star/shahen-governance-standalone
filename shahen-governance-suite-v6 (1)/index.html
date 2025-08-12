@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHAHEN • GRC Unified Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { tga1: '#0E1B4D', tga2: '#1F2D5C' } } }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <header class="bg-tga text-slate-900 dark:text-slate-900">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-white/80 grid place-items-center font-bold">S</div>
+        <div>
+          <h1 class="text-2xl font-bold">منصة شاهِن • لوحات الحوكمة الموحّدة</h1>
+          <p class="text-sm opacity-80">دمج shahen-tga + shahen-grc-pro • فرز تنازلي افتراضي • وضع ليلي</p>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="index.html" class="navlink">لوحة القيادة</a>
+        <a href="integrations.html" class="navlink">دمج اللوحات</a>
+        <a href="strategy.html" class="navlink">الاستراتيجية</a>
+        <a href="performance.html" class="navlink">الأداء</a>
+        <a href="risks.html" class="navlink">المخاطر</a>
+        <a href="compliance.html" class="navlink">الالتزام</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-6">
+      <div class="text-lg font-medium">نظرة عامة على القطاع (2022–2024)</div>
+      <div class="flex items-center gap-2">
+        <button id="btn-sort" class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800" onclick="toggleSort()">↧ فرز تنازلي</button>
+        <button class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800" onclick="toggleDark()">🌓 وضع ليلي</button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <section class="grid md:grid-cols-5 gap-4">
+      <div class="kpi">
+        <div class="text-sm opacity-70">إجمالي الشحنات (2022–2024)</div>
+        <div class="text-2xl font-bold" id="kpi-shipments">-</div>
+        <div class="badge">آخر سنة: <span id="kpi-latest-year">-</span></div>
+      </div>
+      <div class="kpi">
+        <div class="text-sm opacity-70">الحوادث الجسيمة (آخر سنة متاحة)</div>
+        <div class="text-2xl font-bold" id="kpi-incidents">-</div>
+        <div class="badge">المصدر: هيئة الإحصاء</div>
+      </div>
+      <div class="kpi">
+        <div class="text-sm opacity-70">عدد العاملين</div>
+        <div class="text-2xl font-bold" id="kpi-employees">-</div>
+        <div class="badge">قابل للتحديث</div>
+      </div>
+      <div class="kpi">
+        <div class="text-sm opacity-70">نسبة السعودة</div>
+        <div class="text-2xl font-bold" id="kpi-saudization">-</div>
+        <div class="badge">قابل للتحديث</div>
+      </div>
+      <div class="kpi">
+        <div class="text-sm opacity-70">الرحلات خارج المدن (مليون)</div>
+        <div class="text-2xl font-bold"><span id="kpi-trips">60</span>+</div>
+        <div class="badge">2024 تقديري</div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="grid md:grid-cols-2 gap-6 mt-8">
+      <div class="card">
+        <div class="mb-2 font-medium">عدد الشحنات السنوي</div>
+        <canvas id="chartShipments" height="120"></canvas>
+      </div>
+      <div class="card">
+        <div class="mb-2 font-medium">الحوادث المرورية الجسيمة</div>
+        <canvas id="chartIncidents" height="120"></canvas>
+      </div>
+    </section>
+
+    <!-- Regions & Cargo -->
+    <section class="grid md:grid-cols-2 gap-6 mt-8">
+      <div class="card">
+        <div class="mb-3 font-medium">المناطق الأكثر نشاطًا</div>
+        <ul id="regions-list" class="divide-y divide-slate-100 dark:divide-slate-800"></ul>
+      </div>
+      <div class="card">
+        <div class="mb-3 font-medium flex items-center justify-between">
+          <span>أنواع الشحنات</span>
+        </div>
+        <table class="w-full text-sm">
+          <thead class="text-start">
+            <tr class="border-b border-slate-200 dark:border-slate-800">
+              <th class="py-2 text-start w-10">#</th>
+              <th class="text-start">النوع</th>
+              <th class="text-end">العدد</th>
+            </tr>
+          </thead>
+          <tbody id="cargo-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="mt-8 footer">المصدر: "نظرة إجمالية (2022–2024)" وبعض التقديرات للعام 2024.</p>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

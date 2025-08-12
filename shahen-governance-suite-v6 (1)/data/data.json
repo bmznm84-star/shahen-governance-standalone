@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "source": "نظرة إجمالية (2022–2024)",
+    "descending_default": true
+  },
+  "kpis": {
+    "employees": 0,
+    "saudization": 0.0
+  },
+  "shipments": [
+    {
+      "year": 2022,
+      "count": 513728
+    },
+    {
+      "year": 2023,
+      "count": 10465218
+    },
+    {
+      "year": 2024,
+      "count": 10500000
+    }
+  ],
+  "incidents": [
+    {
+      "year": 2022,
+      "count": 16962
+    },
+    {
+      "year": 2023,
+      "count": 16534
+    }
+  ],
+  "trucks_outside_cities": [
+    {
+      "year": 2022,
+      "trips_millions": 49.0
+    },
+    {
+      "year": 2023,
+      "trips_millions": 54.0
+    },
+    {
+      "year": 2024,
+      "trips_millions": 60.0
+    }
+  ],
+  "market_value_usd_billion": [
+    {
+      "year": 2022,
+      "value": 5.7
+    },
+    {
+      "year": 2023,
+      "value": 6.0
+    },
+    {
+      "year": 2024,
+      "value": 6.34
+    }
+  ],
+  "regions": [
+    {
+      "name": "المنطقة الشرقية (تشغيل الشحن)",
+      "share": 40.0
+    },
+    {
+      "name": "منطقة الرياض (وجهة التفريغ الأكبر)",
+      "share": 35.0
+    },
+    {
+      "name": "منطقة مكة المكرمة",
+      "share": 15.0
+    },
+    {
+      "name": "مناطق أخرى",
+      "share": 10.0
+    }
+  ],
+  "cargo_types": [
+    {
+      "type": "مواد استهلاكية",
+      "count": 1800000
+    },
+    {
+      "type": "بناء وتشييد",
+      "count": 1500000
+    },
+    {
+      "type": "بتروكيماويات",
+      "count": 1200000
+    },
+    {
+      "type": "أغذية ومشروبات",
+      "count": 900000
+    },
+    {
+      "type": "أخرى",
+      "count": 700000
+    }
+  ],
+  "legacy_srcs": [
+    {
+      "name": "الداشبورد القديم (TGA)",
+      "url": "https://shahen-tga.vercel.app/"
+    },
+    {
+      "name": "الداشبورد GRC PRO",
+      "url": "https://shahen-grc-pro.vercel.app/"
+    }
+  ]
+}

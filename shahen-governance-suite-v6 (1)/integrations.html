@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دمج اللوحات | SHAHEN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <header class="bg-tga text-slate-900 dark:text-slate-900">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-white/80 grid place-items-center font-bold">S</div>
+        <h1 class="text-2xl font-bold">دمج اللوحات</h1>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="index.html" class="navlink">لوحة القيادة</a>
+        <button class="navlink" onclick="toggleDark()">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid gap-6">
+      <section class="card">
+        <div class="mb-2 font-medium flex items-center justify-between">
+          <span>الداشبورد القديم (TGA)</span>
+          <a class="text-sm underline" href="https://shahen-tga.vercel.app/" target="_blank">فتح في تبويب جديد</a>
+        </div>
+        <iframe src="https://shahen-tga.vercel.app/" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" style="height: 70vh;"></iframe>
+      </section>
+
+      <section class="card">
+        <div class="mb-2 font-medium flex items-center justify-between">
+          <span>الداشبورد GRC PRO</span>
+          <a class="text-sm underline" href="https://shahen-grc-pro.vercel.app/" target="_blank">فتح في تبويب جديد</a>
+        </div>
+        <iframe src="https://shahen-grc-pro.vercel.app/" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" style="height: 70vh;"></iframe>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const dark = localStorage.getItem('theme') === 'dark';
+    if (dark) document.documentElement.classList.add('dark');
+    function toggleDark(){
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>
